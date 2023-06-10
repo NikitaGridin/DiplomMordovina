@@ -2,14 +2,6 @@ import axios from "axios";
 import React from "react";
 
 const ModalChangeCategory = ({ setModal, id, getItems, getCategories }) => {
-  const styles = {
-    labes:
-      "block text-gray-700 text-sm font-bold mb-2 block text-gray-700 text-sm font-bold mb-2",
-    input:
-      "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
-    btn: "bg-black w-full text-white font-bold text-xm rounded-lg py-4",
-  };
-
   const [name, setName] = React.useState("");
 
   const getInfo = async () => {
@@ -56,15 +48,15 @@ const ModalChangeCategory = ({ setModal, id, getItems, getCategories }) => {
       onClick={() => setModal(false)}
     >
       <form
-        className="bg-white px-8 pt-6 pb-8 mb-4 w-1/3 rounded"
+        className="bg-white px-8 pt-6 pb-8 mb-4 rounded w-full lg:w-1/3"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-4">
-          <label className={styles.labes} htmlFor="name">
+          <label className="text-gray-700 block mb-2 text-2xl lg:text-lg">
             Название:
           </label>
           <input
-            className={styles.input}
+            className="border border-gray-400 rounded-lg px-4 py-2 w-full text-2xl lg:text-lg"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -73,7 +65,7 @@ const ModalChangeCategory = ({ setModal, id, getItems, getCategories }) => {
 
         <div className="mb-6">
           <button
-            className={styles.btn}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 rounded-lg w-full text-2xl lg:text-lg lg:py-2"
             type="button"
             onClick={() => changeInfo()}
           >

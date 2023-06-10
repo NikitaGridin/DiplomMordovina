@@ -27,27 +27,29 @@ const Order = ({ e, getOrders }) => {
             : "bg-red-400"
         }`}
       ></div>
-      <div>{e.created_at}</div>
-      <div>
-        Статус{" "}
+      <div className="text-2xl font-bold mb-5 lg:text-lg">{e.created_at}</div>
+      <div className="text-2xl mb-5 lg:text-lg lg:mb-2">
+        Статус:
         {e.status === "wait"
-          ? "Ожидает подтверждения"
+          ? " Ожидает"
           : e.status === "bad"
-          ? "Отменён"
-          : "Подтверждён"}{" "}
+          ? " Отменён"
+          : " Подтверждён"}{" "}
       </div>
-      <div className="flex justify-between mt-5">
-        <div>Общая стоимость: {e.allprice} р</div>
+      <div className="">
+        <div className="text-2xl lg:text-lg">
+          Общая стоимость: {e.allprice} р
+        </div>
         {user.user && user.role === "admin" && (
-          <div>
+          <div className="lg:grid lg:grid-cols-2 lg:gap-10">
             <button
-              className="bg-green-500 py-2 px-6 font-bold text-white rounded-2xl"
+              className="bg-green-500 mb-5 mt-5 font-bold text-white rounded-2xl w-full text-2xl py-4 lg:text-lg lg:py-2"
               onClick={() => changeStatus(e.id, 2)}
             >
               Подтвердить
-            </button>{" "}
+            </button>
             <button
-              className="bg-red-500 py-2 px-6 font-bold text-white rounded-2xl"
+              className="bg-red-500 mb-5 mt-5 font-bold text-white rounded-2xl w-full text-2xl py-4 lg:text-lg lg:py-2"
               onClick={() => changeStatus(e.id, 3)}
             >
               Отменить
@@ -58,22 +60,20 @@ const Order = ({ e, getOrders }) => {
       <div className="h-[200px] overflow-y-scroll mt-5">
         {e.products.map((e, i) => {
           return (
-            <Link
-              to={`/product/${e.id}`}
-              key={i}
-              className="flex items-center mb-4"
-            >
-              <div className="bg-gray-100 rounded-2xl">
+            <Link to={`/product/${e.id}`} key={i} className="lg:flex">
+              <div className="bg-gray-100 rounded-2xl block mb-2 lg:mr-5">
                 <img
                   src={`${import.meta.env.VITE_APP_API_URL}${e.img}`}
-                  className="w-16"
-                  alt=""
+                  className="w-full rounded-3xl h-32 object-cover lg:h-20 lg:w-20 lg:rounded-2xl"
                 />
               </div>
-              <div className="flex-1 ml-4">
-                <div className="mb-2">{e.name}</div>
-                <div>
-                  {e.price}р {e.wt} кол-во:{e.count}
+              <div className="">
+                <div className="mb-2 text-2xl font-semibold lg:text-lg">
+                  {e.name}
+                </div>
+                <div className="text-2xl lg:text-lg">
+                  {e.price}р{" "}
+                  <span className="text-gray-400 lg:text-lg">{e.wt} г</span>
                 </div>
               </div>
             </Link>

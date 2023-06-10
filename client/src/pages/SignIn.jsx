@@ -36,61 +36,91 @@ const SignIn = () => {
 
   return (
     <form
-      action=""
-      className="w-1/2 mx-auto border bg-gray-100 p-5 rounded-3xl text-center"
-      onSubmit={handleSubmit}
+      className="w-full max-w-sm mx-auto bg-white px-4 py-8 rounded-lg shadow-lg border"
+      onSubmit={(e) => handleSubmit(e)}
     >
-      <h1 className="font-bold font-Comfortaa text-5xl mb-10 py-10">
+      <h2 className="text-4xl text-center font-bold mb-6 text-gray-800">
         Регистрация
-      </h1>
+      </h2>
 
-      <label htmlFor="">
-        Имя
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="block mx-auto mb-10 p-3 rounded-3xl"
-        />
-      </label>
-      <label htmlFor="">
-        Фамилия
-        <input
-          type="text"
-          name="surname"
-          value={surname}
-          onChange={(e) => setSurname(e.target.value)}
-          className="block mx-auto mb-10 p-3 rounded-3xl"
-        />
-      </label>
-      <label htmlFor="">
-        Номер телефона
-        <input
-          type="number"
-          name="numberPhone"
-          value={numberPhone}
-          onChange={(e) => setNumberPhone(e.target.value)}
-          className="block mx-auto mb-10 p-3 rounded-3xl"
-        />
-      </label>
-      <label htmlFor="">
-        Пароль
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="block mx-auto p-3 rounded-3xl"
-        />
-      </label>
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium mb-2 text-2xl">
+          Имя:
+        </label>
+        <div className="relative">
+          <input
+            className="block appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline text-2xl"
+            id="name"
+            type="text"
+            placeholder="Введите имя"
+            required
+            maxLength="40"
+            pattern="[А-Яа-яЁё\s]*"
+            onChange={(e) => setName(e.target.value)}
+            title="Введите имя, не более 40 символов, кириллицей!"
+          />
+        </div>
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium mb-2 text-2xl">
+          Фамилия:
+        </label>
+        <div className="relative">
+          <input
+            className="block appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline text-2xl"
+            id="name"
+            type="text"
+            placeholder="Введите фамилию"
+            required
+            maxLength="40"
+            pattern="[А-Яа-яЁё\s]*"
+            onChange={(e) => setSurname(e.target.value)}
+            title="Введите фамилию, не более 40 символов, кириллицей!"
+          />
+        </div>
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium mb-2 text-2xl">
+          Номер телефона:
+        </label>
+        <div className="relative">
+          <input
+            className="block appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline text-2xl"
+            id="phone"
+            type="tel"
+            placeholder="8 (___) ___-__-__"
+            pattern="^8\d{10}$"
+            required
+            minLength="11"
+            maxLength="11"
+            title="Введите номер телефона в формате: 8 (XXX) XXX-XX-XX"
+            onChange={(e) => setNumberPhone(e.target.value)}
+          />
+        </div>
+      </div>
+      <div className="mb-6">
+        <label className="block text-gray-700 font-medium mb-2 text-2xl">
+          Пароль
+        </label>
+        <div className="relative">
+          <input
+            className="block appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline text-2xl"
+            id="password"
+            type="password"
+            name="password"
+            placeholder="Введите пароль"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+      </div>
       <button
-        className="bg-black/60 text-white px-10 mt-10 py-2 rounded-3xl"
-        onClick={(e) => handleSubmit(e)}
+        className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-4 rounded-lg focus:outline-none focus:shadow-outline w-full text-2xl"
+        type="submit"
       >
         Зарегестрироваться
       </button>
-      <Link to="/login" className="text-lg font-medium block">
+      <Link to="/login" className="text-xl mt-5 font-medium block">
         Уже зарегестрированы?
       </Link>
     </form>

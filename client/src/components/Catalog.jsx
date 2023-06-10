@@ -155,10 +155,10 @@ const Catalog = () => {
           categories={categories}
         />
       )}
-      <div className="flex">
+      <div className="flex w-full overflow-scroll">
         <button
-          className={`bg-[#F1F1F1] px-6 py-4 rounded-full mr-5 ${
-            !selectCategory ? "bg-[#282828] text-white" : ""
+          className={`px-6 py-3 text-2xl font-medium font-Inter rounded-3xl mr-5 lg:py-2 lg:px-4 lg:text-lg ${
+            !selectCategory ? "bg-[#2e2e2e] text-white" : "border"
           }`}
           onClick={() => setActiveCategory("")}
         >
@@ -169,13 +169,13 @@ const Catalog = () => {
             {user.isAuth && user.role === "admin" && (
               <div className="">
                 <div
-                  className="p-2 bg-red-500 rounded-xl text-center cursor-pointer text-white"
+                  className="lg:px-2 lg:py-0 py-4 px-4 bg-red-500 rounded-lg text-center cursor-pointer text-white"
                   onClick={() => handleDeleteCategory(category.id)}
                 >
                   х
                 </div>
                 <div
-                  className="p-2 bg-blue-500 rounded-xl text-center cursor-pointer text-white"
+                  className="lg:px-2 lg:py-0 py-4 px-4 rounded-lg bg-blue-500 text-center cursor-pointer text-white"
                   onClick={() => handleChangeCategory(category.id)}
                 >
                   ...
@@ -184,8 +184,10 @@ const Catalog = () => {
             )}
             <button
               key={category.id}
-              className={`bg-[#F1F1F1] px-6 py-4 rounded-full mr-5 ${
-                selectCategory === category.id ? "bg-[#282828] text-white" : ""
+              className={`px-6 py-3 text-2xl font-medium font-Inter rounded-full mr-5 lg:py-2 lg:px-4 lg:text-lg  ${
+                selectCategory === category.id
+                  ? "bg-[#2e2e2e] text-white"
+                  : "border"
               }`}
               onClick={() => setActiveCategory(category.id)}
             >
@@ -193,89 +195,97 @@ const Catalog = () => {
             </button>
           </div>
         ))}
-        {user.isAuth && user.role === "admin" && (
-          <button
-            className="bg-gray-300 rounded-2xl px-5"
-            onClick={() => setModalCategory(!modalCategory)}
-          >
-            Добавить категорию
-          </button>
-        )}
       </div>
-      <h1 className="mt-[60px] mb-[30px] font-bold font-Comfortaa text-4xl">
+      {user.isAuth && user.role === "admin" && (
+        <button
+          className="bg-gray-300 rounded-2xl px-5 py-5 text-2xl mt-5 w-full md:w-auto lg:text-lg lg:py-3"
+          onClick={() => setModalCategory(!modalCategory)}
+        >
+          Добавить категорию
+        </button>
+      )}
+      <h1 className="mt-[80px] mb-[20px] font-bold font-Comfortaa text-4xl text-center lg:text-left lg:mt-[100px]">
         Все сладости
       </h1>
       {user.isAuth && user.role === "admin" && (
         <button
-          className="bg-gray-300 rounded-2xl px-5 py-2"
+          className="bg-gray-300 rounded-2xl px-5 py-5 text-2xl mt-5 w-full md:w-auto lg:text-lg lg:py-3"
           onClick={() => setModalAddProduct(!modalCategory)}
         >
           Добавить продукт
         </button>
       )}
-      <div className="grid grid-cols-4 gap-24">
-        {products.map((product) => (
-          <div
-            className="bg-[#F6F6F6] block rounded-3xl transition-all hover:shadow-md"
-            key={product.id}
-          >
-            {user.isAuth && user.role === "admin" && (
-              <div className="grid grid-cols-2 gap-5">
-                <div
-                  className="py-2 bg-red-500 rounded-xl text-center cursor-pointer text-white"
-                  onClick={() => handleDelete(product.id)}
+      {!products.length && (
+        <div className="text-center font-medium text-2xl mt-10">
+          Товары кончились ;(
+        </div>
+      )}
+      <div className="grid grid-cols-1 gap-24 mt-10 sm:grid-cols-2 xl:grid-cols-4">
+        {products &&
+          products.map((product) => (
+            <div
+              className="bg-[#F6F6F6] block rounded-3xl transition-all hover:shadow-md"
+              key={product.id}
+            >
+              {user.isAuth && user.role === "admin" && (
+                <div className="grid grid-cols-1 gap-5 mb-5 lg:grid-cols-2">
+                  <div
+                    className="bg-red-500 rounded-xl text-center cursor-pointer text-white text-2xl py-4 lg:py-2 lg:text-lg"
+                    onClick={() => handleDelete(product.id)}
+                  >
+                    Удалить
+                  </div>
+                  <div
+                    className="bg-blue-500 rounded-xl text-center cursor-pointer text-white text-2xl py-4 lg:py-2 lg:text-lg"
+                    onClick={() => handleChangeProduct(product.id)}
+                  >
+                    Редактировать
+                  </div>
+                </div>
+              )}
+              <Link to={`/product/${product.id}`} key={product.id}>
+                <img
+                  src={`${import.meta.env.VITE_APP_API_URL}${product.img}`}
+                  className="w-full h-80 object-cover rounded-3xl mb-5"
+                  alt=""
+                />
+                <div className="px-5">
+                  <div className="mb-4 font-Inter text-3xl md:text-2xl lg:text-lg">
+                    {product.price} р
+                  </div>
+                  <div className="font-Inter text-2xl font-medium mb-1 md:text-xl lg:text-lg">
+                    {product.name}
+                  </div>
+                  <div className="font-Inter text-gray-400 text-2xl font-medium md:text-xl lg:text-lg">
+                    {product.wt} г
+                  </div>
+                </div>
+              </Link>
+              <div className="px-5 pb-5 mt-5">
+                <button
+                  className="w-full text-center text-3xl shadow-sm bg-white rounded-3xl transition-all font-Comfortaa py-5 md:text-2xl lg:text-lg lg:py-4"
+                  onClick={() => {
+                    if (isInCart(product)) {
+                      deleteFromCart(product);
+                    } else {
+                      addToCart(product);
+                    }
+                  }}
                 >
-                  Удалить
-                </div>
-                <div
-                  className="py-2 bg-blue-500 rounded-xl text-center cursor-pointer text-white"
-                  onClick={() => handleChangeProduct(product.id)}
-                >
-                  Редактировать
-                </div>
+                  {isInCart(product) ? "Удалить из корзины" : "В корзину"}
+                </button>
               </div>
-            )}
-            <Link to={`/product/${product.id}`} key={product.id}>
-              <img
-                src={`${import.meta.env.VITE_APP_API_URL}${product.img}`}
-                className="w-full h-80 object-cover rounded-3xl mb-5"
-                alt=""
-              />
-              <div className="px-5">
-                <div className="mb-2 font-Inter text-xl">{product.price} р</div>
-                <div className="font-Inter text-lg font-light mb-1">
-                  {product.info}
-                </div>
-                <div className="font-Inter text-gray-400 font-medium">
-                  {product.wt} г
-                </div>
-              </div>
-            </Link>
-            <div className="px-5 pb-5 mt-5">
-              <button
-                className="w-full text-center shadow-sm bg-white rounded-3xl transition-all font-Comfortaa py-5"
-                onClick={() => {
-                  if (isInCart(product)) {
-                    deleteFromCart(product);
-                  } else {
-                    addToCart(product);
-                  }
-                }}
-              >
-                {isInCart(product) ? "Удалить из корзины" : "В корзину"}
-              </button>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
       {pages && (
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-10">
           {[...Array(pages)].map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrentPage(i + 1)}
-              className={`bg-gray-100 py-3 px-5 mr-5 rounded-full ${
-                currentPage === i + 1 ? "bg-black/60 text-white" : ""
+              className={`py-5 px-7 mr-5 rounded-full text-2xl font-bold md:py-3 md:px-5 lg:text-lg lg:py-2 lg:px-4 ${
+                currentPage === i + 1 ? "bg-[#2e2e2e] text-white" : ""
               }`}
             >
               {i + 1}

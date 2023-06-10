@@ -24,32 +24,32 @@ const Header = () => {
   }, [menuRef]);
 
   return (
-    <div className="mb-[100px] border-b-[1px] pb-10 flex justify-between">
-      <Link to="/main" className="flex">
-        <img src={Logo} alt="logo" className="mr-[12px]" />
+    <div className="mb-[100px] border-b-[1px] pb-10 relative">
+      <Link to="/main" className="text-center">
+        <img src={Logo} alt="logo" className="w-20 mb-2 mx-auto" />
         <div>
-          <div className="font-Comfortaa font-bold text-[32px]">
+          <div className="font-Comfortaa font-bold text-[32px] mb-2 lg:text-2xl">
             The black doctor
           </div>
-          <div className="font-Comfortaa font-medium text-[20px] text-[#898989]">
+          <div className="font-Comfortaa font-medium text-[22px] w-full text-[#898989] lg:text-xl">
             самые вкусные сладости во вселенной!
           </div>
         </div>
       </Link>
-      <button className="relative" ref={menuRef}>
-        {menu && <Menu />}
+      <button className="absolute top-10 right-6" ref={menuRef}>
+        {menu && <Menu setMenu={setMenu} />}
         {menu ? (
           <img
             src={Close}
             alt="burger"
-            className="w-6"
+            className="w-8 lg:w-6"
             onClick={() => setMenu(false)}
           />
         ) : (
           <img
             src={Burger}
             alt="burger"
-            className="w-6"
+            className="w-8 lg:w-6"
             onClick={() => setMenu(true)}
           />
         )}

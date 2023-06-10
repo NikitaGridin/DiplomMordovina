@@ -27,13 +27,18 @@ const AddCategory = ({ fetchCategories, setModalCategory }) => {
       onClick={() => setModalCategory(false)}
     >
       <div
-        className="bg-white rounded-lg shadow-lg p-6 w-1/4"
+        className="bg-white rounded-lg shadow-lg p-6 w-full lg:w-1/4"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-2xl font-medium mb-4">Добавление категории</h2>
-        <form className="max-w-sm" onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="name" className="text-gray-700 block mb-2">
+        <h2 className="text-3xl text-center font-medium mb-6 lg:text-xl">
+          Добавление категории
+        </h2>
+        <form className="" onSubmit={handleSubmit}>
+          <div className="mb-6">
+            <label
+              htmlFor="name"
+              className="text-gray-700 block mb-2 text-2xl lg:text-lg"
+            >
               Название категории
             </label>
             <input
@@ -41,7 +46,7 @@ const AddCategory = ({ fetchCategories, setModalCategory }) => {
               id="name"
               name="name"
               placeholder="Введите название категории"
-              className="border border-gray-400 rounded-lg px-4 py-2 w-full"
+              className="border border-gray-400 rounded-lg px-4 py-2 w-full text-2xl lg:text-lg"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -49,7 +54,7 @@ const AddCategory = ({ fetchCategories, setModalCategory }) => {
           <div>
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 rounded-lg w-full text-2xl lg:text-lg lg:py-2"
             >
               Добавить категорию
             </button>

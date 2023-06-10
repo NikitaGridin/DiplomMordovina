@@ -11,6 +11,10 @@ import SignIn from "./pages/SignIn";
 import { observer } from "mobx-react-lite";
 import User from "./user";
 import Admin from "./pages/Admin";
+import ProductPage from "./pages/ProductPage";
+import WhatWeSell from "./pages/WhatWeSell";
+import Questions from "./pages/Questions";
+import HowWork from "./pages/HowWork";
 
 const App = observer(() => {
   const getCookie = (name) => {
@@ -52,7 +56,7 @@ const App = observer(() => {
   }, []);
   return (
     <Router>
-      <div className="bg-white rounded-[20px] px-16 py-14">
+      <div className="bg-white sm:rounded-[20px] px-5 py-5 lg:px-10 lg:py-10">
         <Header />
         <Routes>
           <Route path="/main" element={<Main />} />
@@ -67,6 +71,10 @@ const App = observer(() => {
             <Route path="/admin" element={<Admin />} />
           )}
           <Route path="/cart" element={<Cart />} />
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/whatWeSell" element={<WhatWeSell />} />
+          <Route path="/questions" element={<Questions />} />
+          <Route path="/howWork" element={<HowWork />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
         <Footer />

@@ -42,24 +42,34 @@ const Account = () => {
   }, []);
   return (
     <div>
-      <h1 className="mt-[60px] mb-[30px] font-bold font-Comfortaa text-4xl">
+      <h1 className="mt-[60px] mb-[40px] font-bold font-Comfortaa text-4xl text-center lg:text-start lg:mb-[20px]">
         Личный профиль
       </h1>
       {user && (
         <>
-          <div>Имя: {user.name}</div>
-          <div>Фамилия: {user.surname}</div>
-          <div>Номер телефона: {user.numberPhone}</div>
+          <div className="text-3xl mb-5 lg:mb-3 lg:text-lg">
+            <strong>Имя: </strong>
+            {user.name}
+          </div>
+          <div className="text-3xl mb-5 lg:mb-3 lg:text-lg">
+            <strong>Фамилия:</strong> {user.surname}
+          </div>
+          <div className="text-3xl lg:text-lg">
+            <strong>Номер телефона:</strong> {user.numberPhone}
+          </div>
           <button
-            className="text-white bg-red-600 px-10 py-4 rounded-2xl font-Comfortaa mt-5"
+            className="text-white bg-red-600 py-4 rounded-2xl font-Comfortaa mt-5 w-full text-2xl font-bold lg:text-lg lg:w-auto lg:px-5 lg:py-2"
             onClick={() => logout()}
           >
             Выйти
           </button>
-          <h1 className="mt-[140px] mb-[30px] font-bold font-Comfortaa text-4xl">
+          <h1 className="mt-[140px] mb-[30px] font-bold font-Comfortaa text-4xl text-center lg:text-left">
             Ваши заказы
           </h1>
-          <div className="grid grid-cols-2 gap-20">
+          {orders && !orders.length && (
+            <div className="text-center font-bold text-3xl">Заказов нет</div>
+          )}
+          <div className="grid grid-cols-1 gap-20 lg:grid-cols-2">
             {orders &&
               orders.map((e, i) => (
                 <Order e={e} key={i} getOrders={getOrders} />

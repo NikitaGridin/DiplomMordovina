@@ -63,7 +63,7 @@ $sql_create_product = "CREATE TABLE IF NOT EXISTS product (
   wt INT,
   info TEXT,
   categoryId INT,
-  FOREIGN KEY (categoryId) REFERENCES categories(id) ON DELETE CASCADE,
+  FOREIGN KEY (categoryId) REFERENCES categories(id) ON DELETE CASCADE
 )";
 if (mysqli_query($conn, $sql_create_product)) {
     echo "Table product created successfully\n";
@@ -91,7 +91,7 @@ $sql_create_orders = "CREATE TABLE IF NOT EXISTS product_orders (
     orderId INT NOT NULL,
     count INT NOT NULL,
     FOREIGN KEY (productId) REFERENCES product(id) ON DELETE CASCADE,
-    FOREIGN KEY (orderId) REFERENCES orders(id) ON DELETE CASCADE);";
+    FOREIGN KEY (orderId) REFERENCES orders(id) ON DELETE CASCADE)";
 if (mysqli_query($conn, $sql_create_orders)) {
     echo "Table orders created successfully\n";
 } else {

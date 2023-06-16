@@ -59,7 +59,7 @@ const App = observer(() => {
       <div className="bg-white sm:rounded-[20px] px-5 py-5 lg:px-10 lg:py-10">
         <Header />
         <Routes>
-          <Route path="/main" element={<Main />} />
+          <Route path="/" element={<Main />} />
           {!User.isAuth && (
             <>
               <Route path="/login" element={<Login />} />

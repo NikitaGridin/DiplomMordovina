@@ -56,16 +56,18 @@ const Cart = () => {
 
   return (
     <div className="grid grid-cols-1 gap-20 lg:grid-cols-2">
-      <div>
-        <h1 className="mb-[30px] font-bold font-Comfortaa text-4xl text-center">
-          Корзина
-        </h1>
+      <div className={cartItems.length === 0 ? `col-span-2` : ""}>
+        {cartItems.length != 0 && (
+          <h1 className="mb-[30px] font-bold font-Comfortaa text-4xl text-center">
+            Корзина
+          </h1>
+        )}
         {cartItems.length === 0 ? (
           <div className="text-3xl text-center font-semibold">
-            Корзина пуста.{" "}
+            Корзина пуста.
             <Link
-              to="/main"
-              className="px-5 bg-[#FF7373] text-white rounded-xl w-full py-5 text-2xl font-bold font-Inter block mt-5"
+              to="/"
+              className="bg-[#FF7373] text-white rounded-xl mx-auto py-3 text-xl font-bold font-Inter block mt-5 lg:w-1/2 xl:w-1/3"
             >
               Перейти к покупкам
             </Link>
@@ -81,7 +83,7 @@ const Cart = () => {
                   <div className="bg-gray-100 rounded-2xl block mb-2 lg:mr-5">
                     <img
                       src={`${import.meta.env.VITE_APP_API_URL}${e.img}`}
-                      className="w-full md:h-80 rounded-3xl h-32 object-cover lg:h-20 lg:w-20 lg:rounded-2xl"
+                      className="w-full h-96 md:h-80 rounded-3xl h-32 object-cover lg:h-20 lg:w-20 lg:rounded-2xl"
                     />
                   </div>
                   <div className="">

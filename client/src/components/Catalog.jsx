@@ -155,7 +155,7 @@ const Catalog = () => {
           categories={categories}
         />
       )}
-      <div className="flex w-full overflow-scroll">
+      <div className="flex w-full overflow-scroll lg:overflow-auto">
         <button
           className={`px-6 py-3 text-2xl font-medium font-Inter rounded-3xl mr-5 lg:py-2 lg:px-4 lg:text-lg ${
             !selectCategory ? "bg-[#2e2e2e] text-white" : "border"
@@ -169,13 +169,13 @@ const Catalog = () => {
             {user.isAuth && user.role === "admin" && (
               <div className="">
                 <div
-                  className="lg:px-2 lg:py-0 py-4 px-4 bg-red-500 rounded-lg text-center cursor-pointer text-white"
+                  className="lg:px-2 lg:py-0 py-1 px-4 text-2xl bg-red-500 rounded-lg text-center cursor-pointer text-white"
                   onClick={() => handleDeleteCategory(category.id)}
                 >
                   х
                 </div>
                 <div
-                  className="lg:px-2 lg:py-0 py-4 px-4 rounded-lg bg-blue-500 text-center cursor-pointer text-white"
+                  className="lg:px-2 lg:py-0 py-1 px-4 text-2xl rounded-lg bg-blue-500 text-center cursor-pointer text-white"
                   onClick={() => handleChangeCategory(category.id)}
                 >
                   ...
@@ -220,7 +220,7 @@ const Catalog = () => {
           Товары кончились ;(
         </div>
       )}
-      <div className="grid grid-cols-1 gap-24 mt-10 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-24 mt-10 sm:grid-cols-2 sm:gap-5 xl:grid-cols-4 lg:gap-10 lg:grid-cols-3">
         {products &&
           products.map((product) => (
             <div
@@ -228,7 +228,7 @@ const Catalog = () => {
               key={product.id}
             >
               {user.isAuth && user.role === "admin" && (
-                <div className="grid grid-cols-1 gap-5 mb-5 lg:grid-cols-2">
+                <div className="grid grid-cols-1 gap-1 mb-1 lg:grid-cols-2">
                   <div
                     className="bg-red-500 rounded-xl text-center cursor-pointer text-white text-2xl py-4 lg:py-2 lg:text-lg"
                     onClick={() => handleDelete(product.id)}
@@ -246,14 +246,14 @@ const Catalog = () => {
               <Link to={`/product/${product.id}`} key={product.id}>
                 <img
                   src={`${import.meta.env.VITE_APP_API_URL}${product.img}`}
-                  className="w-full h-80 object-cover rounded-3xl mb-5"
+                  className="w-full h-80 object-cover rounded-3xl mb-5 sm:h-60"
                   alt=""
                 />
                 <div className="px-5">
                   <div className="mb-4 font-Inter text-3xl md:text-2xl lg:text-lg">
                     {product.price} р
                   </div>
-                  <div className="font-Inter text-2xl font-medium mb-1 md:text-xl lg:text-lg">
+                  <div className="font-Inter text-2xl font-medium mb-1 md:text-xl lg:text-lg truncate">
                     {product.name}
                   </div>
                   <div className="font-Inter text-gray-400 text-2xl font-medium md:text-xl lg:text-lg">

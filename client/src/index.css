@@ -8,11 +8,18 @@
 @media only screen and (min-width: 640px) {
   body {
     background-color: #ffd8d8;
-    padding: 60px 140px;
+    padding: 60px 60px;
   }
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.swiper-pagination-bullet {
+  width: 14px;
+  height: 14px;
+}
+.swiper-pagination-bullet-active {
+  background-color: rgb(255, 93, 179);
 }

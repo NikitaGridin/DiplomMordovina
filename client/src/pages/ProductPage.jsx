@@ -47,7 +47,7 @@ const ProductPage = () => {
           <img
             src={import.meta.env.VITE_APP_API_URL + product.img}
             alt=""
-            className="w-full rounded-3xl mb-5"
+            className="w-full rounded-3xl mb-5 object-cover h-96"
           />
           <div>
             <h1 className="mb-[10px] font-bold font-Comfortaa text-2xl">

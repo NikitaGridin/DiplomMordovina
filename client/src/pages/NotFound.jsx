@@ -11,7 +11,7 @@ const NotFound = () => {
         Упс! Страница не найдена
       </h2>
       <Link
-        to="/main"
+        to="/"
         className="bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-6 rounded font-Comfortaa transition-all"
       >
         Вернутся на главную

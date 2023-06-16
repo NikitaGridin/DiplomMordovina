@@ -27,7 +27,7 @@ const Login = () => {
           User.setUser(userData.id);
           User.setRole(userData.role);
           document.cookie = `user=${cookies}; path=/`;
-          navigate("/main", { replace: true });
+          navigate("/", { replace: true });
         } else {
           alert(data.message);
         }
@@ -37,7 +37,7 @@ const Login = () => {
 
   return (
     <form
-      className="w-full bg-white px-4 py-8 rounded-lg shadow-lg border"
+      className="w-full max-w-sm mx-auto bg-white px-4 py-8 rounded-lg shadow-lg border"
       onSubmit={(e) => handleSubmit(e)}
     >
       <h2 className="text-4xl text-center font-bold mb-6 text-gray-800">

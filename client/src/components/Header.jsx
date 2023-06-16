@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     <div className="mb-[100px] border-b-[1px] pb-10 relative">
-      <Link to="/main" className="text-center">
+      <Link to="/" className="text-center block">
         <img src={Logo} alt="logo" className="w-20 mb-2 mx-auto" />
         <div>
           <div className="font-Comfortaa font-bold text-[32px] mb-2 lg:text-2xl">

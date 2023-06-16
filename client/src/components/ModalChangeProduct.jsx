@@ -81,7 +81,7 @@ const ModalChangeCategory = ({ setModal, id, getItems, categories }) => {
       onClick={() => setModal(false)}
     >
       <form
-        className="bg-white px-8 pt-6 pb-8 mb-4 w-1/3 rounded absolute top-20"
+        className="bg-white px-8 pt-6 pb-8 mb-4 w-full rounded absolute top-20 lg:w-1/2 xl:w-1/3"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-4">
@@ -179,7 +179,7 @@ const ModalChangeCategory = ({ setModal, id, getItems, categories }) => {
             name=""
             id=""
             value={info}
-            className="block appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline text-2xl lg:text-lg"
+            className="block h-96 appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline text-2xl lg:text-lg"
             onChange={(e) => setInfo(e.target.value)}
           ></textarea>
         </div>
@@ -187,7 +187,7 @@ const ModalChangeCategory = ({ setModal, id, getItems, categories }) => {
           {categories.map((e, i) => {
             return (
               <div
-                className={`cursor-pointer border py-2 text-center font-bold rounded-lg ${
+                className={`cursor-pointer text-2xl border py-2 text-center font-bold rounded-lg lg:text-lg ${
                   category === e.id ? "bg-blue-500 text-white" : "bg-white"
                 }`}
                 key={Math.random()}
@@ -198,7 +198,7 @@ const ModalChangeCategory = ({ setModal, id, getItems, categories }) => {
             );
           })}
         </div>
-        <div className="mb-4">
+        <div className="mb-4 mt-4">
           <label
             className="block text-gray-700 font-medium mb-2 text-2xl lg:text-lg"
             htmlFor="name"

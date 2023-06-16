@@ -2,15 +2,12 @@
 include './conn.php'; 
 include './headers.php';
 
-$user_id = $_GET['user_id'];
-
 $sql = "SELECT orders.id as order_id, orders.created_at as order_created_at, users.name as user_name, users.surname as user_surname, users.numberPhone as user_phone, orders.allprice as order_allprice, orders.count as order_count, orders.status as order_status, product_orders.count as product_count, product.*
         FROM orders
         INNER JOIN user_order ON orders.id = user_order.orderID
         INNER JOIN product_orders ON orders.id = product_orders.orderId
         INNER JOIN product ON product_orders.productId = product.id
-        INNER JOIN users ON user_order.userId = users.id
-        WHERE user_order.userId = $user_id";
+        INNER JOIN users ON user_order.userId = users.id";
 
 $result = mysqli_query($conn, $sql);
 

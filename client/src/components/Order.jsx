@@ -57,7 +57,7 @@ const Order = ({ e, getOrders }) => {
           </div>
         )}
       </div>
-      <div className="h-[200px] overflow-y-scroll mt-5">
+      <div className="overflow-y-scroll mt-5 lg:overflow-auto max-h-36">
         {e.products.map((e, i) => {
           return (
             <Link to={`/product/${e.id}`} key={i} className="lg:flex">

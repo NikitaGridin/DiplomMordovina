@@ -157,7 +157,7 @@ const modaAddProduct = ({ setModal, categories, getItems }) => {
             );
           })}
         </div>
-        <div className="mb-4">
+        <div className="mb-4 mt-4">
           <label className="block text-gray-700 font-medium mb-2 text-2xl lg:text-lg">
             Информация о продукте:
           </label>
@@ -170,7 +170,7 @@ const modaAddProduct = ({ setModal, categories, getItems }) => {
         <input
           type="file"
           onChange={(e) => setImg(e.target.files[0])}
-          className=""
+          className="text-2xl w-full"
         />
         <div className="mb-6">
           <button

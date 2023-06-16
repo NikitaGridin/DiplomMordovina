@@ -8,9 +8,7 @@ const Admin = () => {
 
   const getOrders = async () => {
     try {
-      let url = `${import.meta.env.VITE_APP_API_URL}ordersForOne.php?user_id=${
-        user.user
-      }`;
+      let url = `${import.meta.env.VITE_APP_API_URL}ordersForAdmin.php`;
       const { data } = await axios.get(url);
       setOrders(data);
     } catch (error) {

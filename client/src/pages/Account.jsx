@@ -33,7 +33,7 @@ const Account = () => {
         .replace(/^ +/, "")
         .replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`);
     });
-    window.location.href = "/main";
+    window.location.href = "/";
   };
 
   React.useEffect(() => {

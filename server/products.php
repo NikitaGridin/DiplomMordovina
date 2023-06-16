@@ -6,7 +6,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     case 'GET':
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
-        $limit = isset($_GET['limit']) ? $_GET['limit'] : 1;
+        $limit = isset($_GET['limit']) ? $_GET['limit'] : 8;
         $offset = ($page - 1) * $limit;
         $category = isset($_GET['category']) ? $_GET['category'] : '';
         $sort = isset($_GET['sort']) ? $_GET['sort'] : '';
@@ -30,9 +30,9 @@ switch ($method) {
             $query .= " WHERE categoryId='$category'";
         }
     
-        if ($sort) {
-            $query .= " ORDER BY $sort $order";
-        }
+       
+            $query .= " ORDER BY id DESC";
+     
     
         $query .= " LIMIT $limit OFFSET $offset";
     
